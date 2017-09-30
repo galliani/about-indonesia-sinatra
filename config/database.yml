@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  encoding: unicode
+  
+development:
+  <<: *default
+  database: about_indonesia_dev_db
+  username: 'postgres'
+  password: 'password'
+
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: database_name
+#   pool: 2
+#   username: your_username
+#   password: your_password
