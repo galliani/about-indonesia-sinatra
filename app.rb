@@ -3,7 +3,9 @@ require 'sinatra/json'
 require 'sinatra/activerecord'
 
 require 'dotenv'
-Dotenv.load('config/development.env', 'config/test.env')
+Dotenv.load('config/local.env')
+
+require './config/cors.rb'
 
 set :database_file, 'config/database.yml'
 

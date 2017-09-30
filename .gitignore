@@ -1,2 +1,1 @@
-/config/development.env
-/config/test.env
+/config/local.env

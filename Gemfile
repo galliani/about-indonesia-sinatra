@@ -8,6 +8,7 @@ end
 
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem 'sinatra-cross_origin'
 # Use ActiveRecord as the ORM
 gem 'sinatra-activerecord', '~> 2.0'
 
@@ -21,5 +22,8 @@ gem 'logger'
 gem 'pg'
 gem 'dotenv'
 
-
+# Prevent abusive requests
+github 'sinatra/sinatra' do
+  gem 'rack-protection'
+end
 gem 'require_all'

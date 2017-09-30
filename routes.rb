@@ -1,6 +1,10 @@
 current_dir = Dir.pwd
 Dir["#{current_dir}/models/*.rb"].each { |file| require file }
 
+before do
+  content_type :json
+end
+
 get '/provinces/' do
   json Province.select('id', 'name').all
 end

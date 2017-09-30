@@ -6,14 +6,18 @@ default: &default
   
 development:
   <<: *default
-  database: about_indonesia_dev_db
-  username: 'postgres'
-  password: 'password'
+  database: <%= ENV['DEV_DATABASE_NAME'] %>
+  username: <%= ENV['DEV_DATABASE_USER'] %>
+  password: <%= ENV['DEV_DATABASE_PASSWORD'] %>
 
-# production:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: database_name
-#   pool: 2
-#   username: your_username
-#   password: your_password
+test:
+  <<: *default
+  database: <%= ENV['TEST_DATABASE_NAME'] %>
+  username: <%= ENV['TEST_DATABASE_USER'] %>
+  password: <%= ENV['TEST_DATABASE_PASSWORD'] %>
+
+production:
+  <<: *default
+  database: <%= ENV['PROD_DATABASE_NAME'] %>
+  username: <%= ENV['PROD_DATABASE_USER'] %>
+  password: <%= ENV['PROD_DATABASE_PASSWORD'] %>
