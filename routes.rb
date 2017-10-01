@@ -5,36 +5,40 @@ before do
   content_type :json
 end
 
-get '/provinces/' do
-  json Province.select('id', 'name').all
-end
+namespace '/v1' do
+  namespace '/provinces' do
+    get '/' do
+      json Province.select('id', 'name').all
+    end
 
-get '/provinces/:id' do
-  resource =  Province.find_by_id(params[:id])
+    get '/:id' do
+      resource =  Province.find_by_id(params[:id])
 
-  if resource
-    json resource
-  else
-    halt 404
-  end
-end
+      if resource
+        json resource
+      else
+        halt 404
+      end
+    end
 
-post '/provinces/' do
-  resource = Province.create(params[:province])
+    post '/' do
+      resource = Province.create(params[:province])
 
-  if resource
-    json resource
-  else
-    halt 500
-  end
-end
+      if resource
+        json resource
+      else
+        halt 500
+      end
+    end
 
-delete '/provinces/:id' do
-  resource = Province.find_by_id(params[:id])
+    delete '/:id' do
+      resource = Province.find_by_id(params[:id])
 
-  if resource
-    resource.destroy
-  else
-    halt 404
+      if resource
+        resource.destroy
+      else
+        halt 404
+      end
+    end
   end
 end
